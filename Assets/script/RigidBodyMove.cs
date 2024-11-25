@@ -4,6 +4,7 @@ using TMPro;
 using UnityEditor.XR;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class RigidBodyMove : MonoBehaviour
@@ -68,7 +69,8 @@ public class RigidBodyMove : MonoBehaviour
             Debug.Log("Item!");
             Destroy(collision.gameObject);  
             collectedItems++;
-            scoreText.text = collectedItems.ToString();
+            //scoreText.text = collectedItems.ToString();
+            scoreText.GetComponent<TMP_Text>().text = "score: " + collectedItems.ToString();
         }
     }
 }
