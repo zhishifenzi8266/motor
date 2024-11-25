@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.XR;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,7 +19,7 @@ public class RigidBodyMove : MonoBehaviour
     public bool CanJump;
     public Collision contraQueChoque;
     public int collectedItems;
-    public TMPro.TextMeshPro scoreText;
+    public TMPro.TextMeshProUGUI scoreText;
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();

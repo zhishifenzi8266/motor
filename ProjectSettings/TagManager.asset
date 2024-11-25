@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - killzone
   - win
+  - Item
   layers:
   - Default
   - TransparentFX
