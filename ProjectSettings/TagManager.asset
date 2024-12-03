@@ -9,6 +9,7 @@ TagManager:
   - killzone
   - win
   - Item
+  - checkpoint
   layers:
   - Default
   - TransparentFX

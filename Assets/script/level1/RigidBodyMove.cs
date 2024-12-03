@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor.XR;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,11 +21,16 @@ public class RigidBodyMove : MonoBehaviour
     public bool CanJump;
     public Collision contraQueChoque;
     public int collectedItems;
+    public int totalItems;
     public TMPro.TextMeshProUGUI scoreText;
+    public TMPro.TextMeshProUGUI warningText;
     void Start()
     {
+        totalItems = GameObject.FindGameObjectsWithTag("Item").Length;
+        warningText.enabled = false;
         rigidBody = GetComponent<Rigidbody>();
         CanJump = true;
+        scoreText.text = "score:" + collectedItems + "|" + totalItems;
     }
 
     // Update is called once per frame
@@ -67,10 +73,54 @@ public class RigidBodyMove : MonoBehaviour
         if (collision.gameObject.CompareTag("Item"))
         {
             Debug.Log("Item!");
-            Destroy(collision.gameObject);  
+            Destroy(collision.gameObject);
             collectedItems++;
-            //scoreText.text = collectedItems.ToString();
+            scoreText.text = collectedItems.ToString();
             scoreText.GetComponent<TMP_Text>().text = "score: " + collectedItems.ToString();
         }
+
+        if (collision.gameObject.CompareTag("Item"))
+        {
+            warningText.text = "check point touched";
+            warningText.enabled = true;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Trigger Enter:" + other.gameObject.name);
+        if (!other.gameObject.CompareTag("Item"))
+        {
+        }
+        else
+        {
+            Destroy(other.gameObject);
+            collectedItems++;
+            //scoreText.GetComponent<TMP_Text>().text = "score: " + collectedItems.ToString();
+            //scoreText.text = collectedItems.ToString();
+            scoreText.text = "score:" + collectedItems + "|" + totalItems;
+        }
+        if (other.gameObject.CompareTag("checkpoint"))
+        {
+            warningText.enabled = true;
+        }
+
+        if (other.gameObject.CompareTag("checkpoint"))
+        {
+            warningText.text = "Press E to Save";
+            warningText.enabled = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        Debug.Log("Trigger Exit:" + other.gameObject.name);
+        warningText.enabled = false;
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        Debug.Log("Trigger Stay:" + other.gameObject.name);
+        //collectedItems++;
+        //scoreText.text = collectedItems.ToString();
+     
     }
 }
