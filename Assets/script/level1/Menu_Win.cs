@@ -31,4 +31,11 @@ public class Menu_Win : MonoBehaviour
     {
         SceneManager.LoadScene(level);
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
+
+

@@ -61,13 +61,13 @@ public class RigidBodyMove : MonoBehaviour
         if (collision.gameObject.CompareTag("killzone"))
         {
             Debug.Log("kill!");
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
 
         if (collision.gameObject.CompareTag("win"))
         {
             Debug.Log("win!");
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(0);
         }
 
         if (collision.gameObject.CompareTag("Item"))
@@ -107,7 +107,7 @@ public class RigidBodyMove : MonoBehaviour
 
         if (other.gameObject.CompareTag("checkpoint"))
         {
-            warningText.text = "Press E to Save";
+            warningText.text = "Recolectar item y terminal este level!";
             warningText.enabled = true;
         }
     }
