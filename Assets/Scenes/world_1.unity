@@ -2299,7 +2299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d7e74a1fb09a1f4eb273b6fc13e0948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.15
+  speed: 0.05
   jumpForce: 5
   inputVector: {x: 0, y: 0}
   rigidBody: {fileID: 0}
